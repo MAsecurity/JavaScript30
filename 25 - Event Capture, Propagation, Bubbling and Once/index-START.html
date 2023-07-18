@@ -40,9 +40,24 @@
     background: coral;
   }
 </style>
-
 <button></button>
 <script>
+  const divs = document.querySelectorAll("div");
+  const button = document.querySelector("button");
+
+  function logText(e) {
+    console.log(this.classList.value);
+    e.stopPropagation(); // stops bubbling after value was first captured
+  }
+
+  divs.forEach(div => div.addEventListener('click', logText, {capture:false}));
+
+  // once:true only executes once and wont happen agai.
+  button.addEventListener('click', () => {
+    console.log("Click me ");
+  }, {once:true});
+
+  
 
 </script>
 </body>
